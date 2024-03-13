@@ -1,9 +1,10 @@
 import pygame
 
-from sys import exit
+import sys
 
-from game_scripts.utils import load_image
+from game_scripts.utils import load_image, load_images
 from game_scripts.entities import PhysicsEntity
+from game_scripts.tilemap import Tilemap
 
 class Game:
 	def __init__(self) -> None:
@@ -18,14 +19,22 @@ class Game:
 		self.movement = [False, False]
 
 		self.assets = {
-			'player': load_image('entities/player.png')
+			'decor': load_image('tiles/decor/'),
+			'grass': load_image('tiles/grass/'),
+			'large_decor': load_image('tiles/large_decor/'),
+			'stone': load_image('tiles/stone/'),
+			'player': load_image('entities/player.png/')
 		}
 
 		self.player = PhysicsEntity(self, 'player', (50, 50), (8,15))
 
+		self.tilemap = Tilemap(self, tile_size = 16)
+
 	def run(self):
 		while True:
 			self.display.fill((114, 116, 248))
+
+			self.tilemap.render(self.display)
 
 			self.player.update((self.movement[1] - self.movement[0], 0))
 			self.player.render(self.display)
@@ -33,7 +42,7 @@ class Game:
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					pygame.quit()
-					exit()
+					sys.exit()
 				if event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_LEFT or event.key == pygame.K_d:
 						self.movement[0] = True
