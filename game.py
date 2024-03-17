@@ -23,7 +23,7 @@ class Game:
 			'grass': load_image('tiles/grass/'),
 			'large_decor': load_image('tiles/large_decor/'),
 			'stone': load_image('tiles/stone/'),
-			'player': load_image('entities/player.png/')
+			'player': load_image('entities/player.png')
 		}
 
 		self.player = PhysicsEntity(self, 'player', (50, 50), (8,15))
