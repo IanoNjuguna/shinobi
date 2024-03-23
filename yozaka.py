@@ -2,6 +2,7 @@ import pygame
 
 import sys
 
+
 from game_scripts.utils import load_image, load_images
 from game_scripts.entities import PhysicsEntity
 from game_scripts.tilemap import Tilemap
@@ -19,10 +20,10 @@ class Game:
 		self.movement = [False, False]
 
 		self.assets = {
-			'decor': load_image('tiles/decor/'),
-			'grass': load_image('tiles/grass/'),
-			'large_decor': load_image('tiles/large_decor/'),
-			'stone': load_image('tiles/stone/'),
+			'decor': load_images('tiles/decor'),
+			'grass': load_images('tiles/grass'),
+			'large_decor': load_images('tiles/large_decor'),
+			'stone': load_images('tiles/stone'),
 			'player': load_image('entities/player.png')
 		}
 
