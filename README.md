@@ -15,3 +15,19 @@ The vision is for this game to become a huge FOSS project with as many forks, po
 I will update this policy when the project is mature enough for collaboration along with the guidelines to follow.
 
 However, since the game is at its conception stage - any suggestions you make will be considered.
+
+## HOW TO RUN THE GAME SCRIPT
+
+While in the repository's root directory, run the following OS-specific commands in your terminal:
+
+* Linux (Tested on Debian):
+
+``` bash
+        python3 yozaka.py
+```
+
+* Windows:
+
+``` bash
+        python -u yozaka.py
+```
