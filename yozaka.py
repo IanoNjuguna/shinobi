@@ -68,10 +68,12 @@ class Game:
 			self.tilemap.render(self.display)
 
 			# UPDATE THE PLAYER ENTITY'S POSITION
-			self.player.update((self.movement[1] - self.movement[0], 0))
+			self.player.update(self.tilemap, (self.movement[1] - self.movement[0], 0))
 			
 			# RENDER THE PLAYER ENTITY'S NEW POSITION ONTO A NEW FRAME
 			self.player.render(self.display)
+
+			print(self.tilemap.tiles_around(self.player.pos))
 
 			"""
 			GET INPUT:
@@ -92,14 +94,16 @@ class Game:
 					BIND SPECIFIC KEYS
 				"""
 				if event.type == pygame.KEYDOWN:
-					if event.key == pygame.K_LEFT or event.key == pygame.K_d:
+					if event.key == pygame.K_RIGHT:
 						self.movement[0] = True
-					if event.key == pygame.K_RIGHT or event.key == pygame.K_a:
+					if event.key == pygame.K_LEFT:
 						self.movement[1] = True
+					if event.key == pygame.K_UP:
+						self.player.velocity[1] = -3
 				if event.type == pygame.KEYUP:
-					if event.key == pygame.K_LEFT or event.key == pygame.K_d:
+					if event.key == pygame.K_RIGHT:
 						self.movement[0] = False
-					if event.key == pygame.K_RIGHT or event.key == pygame.K_a:
+					if event.key == pygame.K_LEFT:
 						self.movement[1] = False
 
 			"""
