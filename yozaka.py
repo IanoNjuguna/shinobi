@@ -50,6 +50,7 @@ class Game:
 
 		# DEFINE IMAGES USED FOR VARIOUS ENTITIES AND OBJECTS
 		self.assets = {
+			'background': load_images('blue_sky.jpg'),
 			'decor': load_images('tiles/decor'),
 			'grass': load_images('tiles/grass'),
 			'large_decor': load_images('tiles/large_decor'),
