@@ -28,17 +28,22 @@ class Game:
 		pygame.display.set_caption('Yozaka Ninja')
 
 		# CREATE A WINDOW (USING PYGAME)
-		self.screen = pygame.display.set_mode((640, 480))
+		self.WIDTH = 640
+		self.HEIGHT = 480
+		self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
 
 		"""
 		CREATE PIXEL ART EFFECT:
 			RENDER ASSETS ONTO SMALLER DISPLAY (SMALLER RESOLUTION),
 			SCALE IT UP TO THE SCREEN (LARGER RESOLUTION)
 		"""
-		self.display = pygame.Surface((320, 240))
+		self.PIXEL_WIDTH = 320
+		self.PIXEL_HEIGHT = 240
+		self.display = pygame.Surface((self.PIXEL_WIDTH, self.PIXEL_HEIGHT))
 
 		# PURPOSE OF CLOCK IS TO FORCE THE GAME TO RUN AT 60FPS
 		self.clock = pygame.time.Clock()
+		self.fps = 60
 
 		# MOVEMENT VARIABLE
 		self.movement = [False, False]
@@ -126,7 +131,7 @@ class Game:
 			pygame.display.update()
 
 			# FORCE LOOP TO RUN AT 60FPS
-			self.clock.tick(60)
+			self.clock.tick(self.fps)
 
 # RUN GAME
 Game().run()
