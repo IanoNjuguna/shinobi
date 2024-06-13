@@ -1,13 +1,17 @@
 """
-A Level Editor for Yozaka.
-
-Can be used for other 2D platformer games as well.
+A Level Editor for a 2D platformer game.
 """
 
 import pygame
 
 # IMPORT FUNCTIONS FROM THE UTILS SCRIPT
 from utils import load_image, load_images
+
+# IMPORT THE PHYSICS ENTITY OBJECT FROM THE ENTITIES SCRIPT
+from entities import PhysicsEntity
+
+# IMPORT THE TILEMAP OBJECT FROM THE TILEMAP SCRIPT
+from tilemap import Tilemap
 
 # IMPORT SYS MODULE
 import sys
@@ -18,11 +22,11 @@ class LevelEditor:
 		pygame.init()
 
 		# SET UP PYGAME WINDOW
-		pygame.display.set_caption("Yozaka Level Editor")
+		pygame.display.set_caption("Level Editor")
 
-		self.WIDTH = 1800
-		self.HEIGHT = 900
-		self.TILE_SIZE = 50
+		self.WIDTH = 640
+		self.HEIGHT = 480
+		self.TILE_SIZE = 16
 
 		self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
 		self.fps = 60
@@ -37,25 +41,45 @@ class LevelEditor:
 		self.PIXEL_HEIGHT = 240
 		self.display = pygame.Surface((self.PIXEL_WIDTH, self.PIXEL_HEIGHT))
 
-		self.level = [[0 for _ in range(18)] for _ in range(7)]
-		self.level.append([2 for _ in range(10)])
-		self.level.append([1 for _ in range(10)])
+		"""
+		self.level = [[0 for _ in range(20)] for _ in range(30)]
+		self.level.append([2 for _ in range(20)])
+		self.level.append([1 for _ in range(20)])
 
 		# LOAD GAME ASSETS
 		# DEFINE IMAGES USED FOR VARIOUS ENTITIES AND OBJECTS
 		self.assets = {
-			'background': load_images('blue_sky.jpg'),
 			'decor': load_images('tiles/decor'),
 			'grass': load_images('tiles/grass'),
 			'large_decor': load_images('tiles/large_decor'),
 			'stone': load_images('tiles/stone'),
-			'player': load_image('entities/player.png')
+			'clouds': load_images('clouds'),
 		}
 
+		self.tiles = [
+			"",
+			self.assets['decor'],
+			self.assets['grass'],
+			self.assets['large_decor'],
+			self.assets['stone'],
+		]
+
+	
+	def draw_board(self, board):
+		for q in range(len(board)):
+			for p in range(len(board[q])):
+				if board[q][p] != 0:
+					value = board[q][p]
+					if 0 < value <= 6:
+						self.screen.blit(self.tiles[value], (p * self.TILE_SIZE, q * self.TILE_SIZE))
+					elif value == 7:
+							self.screen.blit(self.tiles[value], (p * self.TILE_SIZE, q * self.TILE_SIZE - 10))
+		"""
+
 	def run(self):
-		while True:
+
 			# COLOR OF THE SKY
-			self.display.fill((114, 116, 248))
+			self.display.fill((14, 219, 248))
 
 			"""
 			GET INPUT:
@@ -70,7 +94,9 @@ class LevelEditor:
 				if event.type == pygame.QUIT:
 					pygame.quit()
 					sys.exit()
+			pygame.display.flip()
 
+			#draw_board(board)
 
 			"""
 			THE BLIT FUNCTION COPIES A SECTION OF MEMORY
@@ -100,4 +126,7 @@ class LevelEditor:
 
 
 # RUN THE LEVEL EDITOR CLASS
-LevelEditor().run()
+Level_Editor = LevelEditor().run()
+
+LevelEditor
+
