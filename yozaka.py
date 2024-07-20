@@ -30,6 +30,7 @@ class Game:
 		# CREATE A WINDOW (USING PYGAME)
 		self.WIDTH = 640
 		self.HEIGHT = 480
+		self.TILE_SIZE =16
 		self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
 
 		"""
@@ -50,11 +51,13 @@ class Game:
 
 		# DEFINE IMAGES USED FOR VARIOUS ENTITIES AND OBJECTS
 		self.assets = {
-			'background': load_images('blue_sky.jpg'),
 			'decor': load_images('tiles/decor'),
 			'grass': load_images('tiles/grass'),
 			'large_decor': load_images('tiles/large_decor'),
 			'stone': load_images('tiles/stone'),
+			'clouds': load_images('clouds'),
+			'leaf': load_images('particles/leaf'),
+			'particle': load_images('particles/particle'),
 			'player': load_image('entities/player.png')
 		}
 
@@ -62,13 +65,13 @@ class Game:
 		self.player = PhysicsEntity(self, 'player', (50, 50), (8,15))
 
 		# INITIALIZE TILEMAP OBJECT IN MAIN GAME SCRIPT
-		self.tilemap = Tilemap(self, tile_size = 16)
+		self.tilemap = Tilemap(self, self.TILE_SIZE)
 
 	# GAME LOOP
 	def run(self):
 		while True:
 			# COLOR OF THE SKY
-			self.display.fill((114, 116, 248))
+			self.display.fill((14, 219, 248))
 
 			# RENDER THE TILEMAP BEHIND THE PLAYER ENTITY
 			self.tilemap.render(self.display)
